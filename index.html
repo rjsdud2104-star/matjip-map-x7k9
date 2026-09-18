@@ -208,8 +208,8 @@ const catI=k=>CATS.find(c=>c.k===k);
 function catColor(k){return getComputedStyle(document.documentElement).getPropertyValue('--cat-'+k).trim()||'#888'}
 function naverUrl(r){
   if(r.nid) return 'https://m.place.naver.com/restaurant/'+r.nid+'/home';
-  const q=r.name+' '+r.addr.split(' ').slice(0,3).join(' ');
-  return 'https://map.naver.com/p/search/'+encodeURIComponent(q)+'?c='+r.lng+','+r.lat+',15,0,0,0,dh';
+  const area=r.addr.split(' ').slice(0,2).join(' ');
+  return 'https://map.naver.com/p/search/'+encodeURIComponent(area+' '+r.name);
 }
 const NAVER_ICON='<svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M1 1h6.5v5.7L10.9 1H15v14h-6.5v-5.7L5.1 15H1z"/></svg>';
 
