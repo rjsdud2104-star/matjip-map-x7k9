@@ -1045,7 +1045,8 @@ const DATA=[
   {id:765,name:'한양대 먹자골목',cat:'hansik',rg:'seoul',addr:'서울 성동구 행당동 200',lat:37.5575,lng:127.035,ka:4.0,nv:4.1,desc:'한양대 앞 저렴한 백반'},
   {id:766,name:'살곶이 카페',cat:'cafe',rg:'seoul',addr:'서울 성동구 응봉동',lat:37.551,lng:127.026,ka:4.2,nv:4.3,desc:'응봉산 개나리뷰 카페'},
   {id:767,name:'왕십리 떡볶이',cat:'bunsik',rg:'seoul',addr:'서울 성동구 행당동 210',lat:37.5615,lng:127.038,ka:4.1,nv:4.0,desc:'왕십리역 떡볶이 순대'},
-  {id:768,name:'서울숲 파스타',cat:'yangsik',rg:'seoul',addr:'서울 성동구 성수동1가',lat:37.5465,lng:127.044,ka:4.4,nv:4.3,desc:'서울숲 근처 크림파스타 맛집'}  {id:769,name:'개포동 순두부',cat:'hansik',rg:'seoul',addr:'서울 강남구 개포동 150',lat:37.492,lng:127.054,ka:4.2,nv:4.1,desc:'개포동 얼큰 순두부찌개'},
+  {id:768,name:'서울숲 파스타',cat:'yangsik',rg:'seoul',addr:'서울 성동구 성수동1가',lat:37.5465,lng:127.044,ka:4.4,nv:4.3,desc:'서울숲 근처 크림파스타 맛집'},
+  {id:769,name:'개포동 순두부',cat:'hansik',rg:'seoul',addr:'서울 강남구 개포동 150',lat:37.492,lng:127.054,ka:4.2,nv:4.1,desc:'개포동 얼큰 순두부찌개'},
   {id:770,name:'일원동 카페',cat:'cafe',rg:'seoul',addr:'서울 강남구 일원동',lat:37.487,lng:127.084,ka:4.1,nv:4.2,desc:'일원역 조용한 주택가 카페'},
   {id:771,name:'세곡동 갈비탕',cat:'hansik',rg:'seoul',addr:'서울 강남구 세곡동',lat:37.47,lng:127.078,ka:4.3,nv:4.2,desc:'세곡동 갈비탕 한그릇 전문'},
   {id:772,name:'도곡동 카페',cat:'cafe',rg:'seoul',addr:'서울 강남구 도곡동 500',lat:37.4915,lng:127.046,ka:4.2,nv:4.3,desc:'도곡역 디저트 카페'},
@@ -1260,6 +1261,9 @@ document.getElementById('sort-sel').onchange=function(){curSort=this.value;apply
 function togglePanel(){document.getElementById('panel').classList.toggle('open')}
 document.getElementById('mob-btn').onclick=togglePanel;
 
+CATS.forEach(c=>{activeCats.add(c.k)});
+catRow.querySelectorAll('.cat-pill').forEach(b=>b.classList.add('on'));
+syncToggleBtn();
 applyFilters();
 setTimeout(()=>{map.invalidateSize();map.setView([36.0,127.5],7)},200);
 window.addEventListener('resize',()=>map.invalidateSize());
