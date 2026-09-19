@@ -968,8 +968,8 @@ function getFiltered(){
   });
   if(curSort!=='default'){
     const[key,dir]=curSort.split('-');
-    const fn=key==='ka'?r=>r.ka:key==='nv'?r=>r.nv:r=>(r.ka+r.nv)/2;
-    list.sort((a,b)=>dir==='desc'?fn(b)-fn(a):fn(a)-fn(b));
+    const fn=key==='ka'?r=>(r.ka||0):key==='nv'?r=>(r.nv||0):r=>((r.ka||0)+(r.nv||0))/(((r.ka?1:0)+(r.nv?1:0))||1);
+    list.sort((a,b)=>{const va=fn(a),vb=fn(b);if(!va&&!vb)return 0;if(!va)return 1;if(!vb)return -1;return dir==='desc'?vb-va:va-vb});
   }
   return list;
 }
